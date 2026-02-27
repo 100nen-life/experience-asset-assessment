@@ -336,6 +336,8 @@
             const diagnosisType = getDiagnosisType(answers);
             displayResults(diagnosisType, answers);
             createRadarChart(answers);
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({event: 'diagnosis_complete'});
         }
         
         function getDiagnosisType(scores) {
