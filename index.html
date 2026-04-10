@@ -438,7 +438,7 @@
             document.getElementById('diagnosisTypeName').textContent = diagnosisType.name;
             document.getElementById('diagnosisOneWord').textContent = diagnosisType.oneWord;
             const characteristics = generateUserCharacteristics(scores);
-            document.getElementById('userCharacteristics').innerHTML = `<h4>💡 あなたの経験資産の特徴</h4><p>${characteristics}</p>`;
+            document.getElementById('userCharacteristics').innerHTML = `<h4>💡 あなたの「仕事・経験・スキル」の特徴</h4><p>${characteristics}</p>`;
             document.getElementById('mainMessage').textContent = diagnosisType.message;
             const bottleneckSupplement = generateBottleneckSupplement(scores);
             document.getElementById('bottleneckContent').innerHTML = `<div class="bottleneck-item">${diagnosisType.bottleneck}${bottleneckSupplement}</div>`;
@@ -465,7 +465,7 @@
             const adviceMap = {'継続性': '長期的な視点で取り組める工夫が次のステップです','専門性': '専門性を深める、または明確にすることが鍵です','需要性': '市場やクライアントへの見せ方を改善することが効果的です','信頼性': '小さな実績を積み重ね、信頼を可視化することが重要です','拡張性': '現在の強みを横展開・応用する可能性を探ることが有効です'};
             if (lowestScores.length === 1) text += adviceMap[lowestScores[0].name] + '。';
             else if (lowestScores.length === 2) text += 'これらの軸を補強することで全体のバランスが向上します。';
-            else text += 'これらの軸を伸ばすことで経験資産が大きく成長します。';
+            else text += 'これらの軸を伸ばすことで新しい収入源を作れる確率が高まります。';
             return text;
         }
         
@@ -476,7 +476,7 @@
             if (lowestScores.length === 1) { const lowest = lowestScores[0]; return `<br><br>特に「${lowest.name}」のスコアが低めです。${lowest.text}`; }
             if (lowestScores.length === 2) { const names = lowestScores.map(s => s.name).join('」と「'); const texts = lowestScores.map(s => s.text).join('また、'); return `<br><br>特に「${names}」のスコアが低めです。${texts}`; }
             const names = lowestScores.map(s => s.name).join('」「');
-            return `<br><br>特に「${names}」のスコアが低めです。これらの軸を伸ばすことで、経験資産が大きく成長します。`;
+            return `<br><br>特に「${names}」のスコアが低めです。これらの軸を伸ばすことで、新しく収入を増やすことができます。`;
         }
         
         function createRadarChart(scores) {
