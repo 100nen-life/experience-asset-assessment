@@ -355,21 +355,29 @@
         const axisLabels = ['継続性', '専門性', '需要性', '信頼性', '拡張性'];
 
         function openTypeform(event) {
-            event.preventDefault();
-            const mail = document.getElementById('mail').value;
-            const typeformUrl = 'https://form.typeform.com/to/wpToEtPq#email=' + encodeURIComponent(mail);
+    event.preventDefault();
 
-            // 裏側でUTAGEに登録
-            fetch('https://start.100nen-life.jp/r/cUi6XztxotyD/store', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: 'mail=' + encodeURIComponent(mail),
-                mode: 'no-cors'
-            }).catch(function() {});
+    const mail = document.getElementById('mail').value;
+    const typeformUrl = 'https://form.typeform.com/to/wpToEtPq#email=' + encodeURIComponent(mail);
 
-            // メインタブをTypeformに遷移
-            window.location.href = typeformUrl;
-        }
+    // GTM用：レポート申込CTAクリック
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        event: 'experience_report_cta_click',
+        cta_location: 'diagnosis_result_fused_page'
+    });
+
+    // 裏側でUTAGEに登録
+    fetch('https://start.100nen-life.jp/r/cUi6XztxotyD/store', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'mail=' + encodeURIComponent(mail),
+        mode: 'no-cors'
+    }).catch(function() {});
+
+    // メインタブをTypeformに遷移
+    window.location.href = typeformUrl;
+}
 
         function saveMailBeforeSubmit() {
             const mail = document.getElementById('mail').value;
