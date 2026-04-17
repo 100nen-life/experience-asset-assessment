@@ -375,8 +375,10 @@
         mode: 'no-cors'
     }).catch(function() {});
 
-    // メインタブをTypeformに遷移
+// 少し待ってからTypeformに遷移
+setTimeout(function () {
     window.location.href = typeformUrl;
+}, 300);
 }
 
         function saveMailBeforeSubmit() {
