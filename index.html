@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KL6XD7FK');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>たった5つの質問で新しい収入源のヒントが見える｜5問・無料</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background: linear-gradient(135deg, #E3F2FD 0%, #FFF9C4 100%); min-height: 100vh; padding: 20px; line-height: 1.8; }
+        .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #062840 0%, #084563 100%); color: white; padding: 40px 30px; text-align: center; }
+        .header h1 { font-size: 2em; margin-bottom: 15px; font-weight: bold; }
+        .header p { font-size: 1.1em; opacity: 0.95; line-height: 1.6; }
+        .header .text-pc { display: inline; }
+        .header .text-sp { display: none; }
+        @media (max-width: 768px) { .header .text-pc { display: none; } .header .text-sp { display: inline; } }
+        .content { padding: 40px 30px; }
+        .start-section { text-align: center; }
+        .start-section h2 { font-size: 1.5em; color: #333; margin-bottom: 25px; }
+        .start-section .description { background: #f8f9fa; padding: 25px; border-radius: 15px; margin-bottom: 30px; text-align: left; border-left: 4px solid #2E86AB; }
+        .start-section .description p { color: #555; margin-bottom: 15px; }
+        .start-section .description p:last-child { margin-bottom: 0; }
+        .start-section .note { color: #666; font-size: 0.95em; margin-bottom: 30px; }
+        .progress-bar { height: 8px; background: #e0e0e0; border-radius: 10px; margin-bottom: 30px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #1E88E5 0%, #42A5F5 100%); width: 0%; transition: width 0.5s; }
+        .question-section { display: none; }
+        .question-section.active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .question-card { background: #f8f9fa; padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+        .question-number { color: #1E88E5; font-weight: bold; font-size: 0.9em; margin-bottom: 10px; }
+        .question-text { font-size: 1.3em; font-weight: bold; color: #333; margin-bottom: 25px; line-height: 1.6; }
+        .options { display: flex; flex-direction: column; gap: 12px; }
+        .option { background: white; border: 2px solid #e0e0e0; padding: 18px 20px; border-radius: 10px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 15px; }
+        .option:hover { border-color: #1E88E5; background: #E3F2FD; transform: translateX(5px); }
+        .option input[type="radio"] { width: 20px; height: 20px; cursor: pointer; }
+        .option-label { flex: 1; cursor: pointer; font-size: 1.05em; }
+        .option-value { color: #1E88E5; font-weight: bold; font-size: 1.1em; }
+        .navigation { display: flex; justify-content: space-between; margin-top: 30px; }
+        .btn { padding: 15px 40px; border: none; border-radius: 10px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: all 0.3s; }
+        .btn-primary { background: #FDD835; color: #333; font-weight: bold; }
+        .btn-primary:hover { background: #FBC02D; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(253, 216, 53, 0.4); }
+        .btn-secondary { background: #e0e0e0; color: #666; }
+        .btn-secondary:hover { background: #d0d0d0; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        #resultSection { display: none; }
+        #resultSection.active { display: block; animation: fadeIn 0.5s; }
+        .result-title { text-align: center; color: #1E88E5; font-size: 2em; margin-bottom: 15px; font-weight: bold; }
+        .diagnosis-type { text-align: center; background: linear-gradient(135deg, #062840 0%, #084563 100%); color: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; }
+        .diagnosis-type h3 { font-size: 1.8em; margin-bottom: 10px; }
+        .diagnosis-type p { font-size: 1.2em; opacity: 0.95; }
+        .user-characteristics { background: #fff9e6; border-left: 4px solid #f9c74f; padding: 20px; border-radius: 10px; margin-bottom: 30px; }
+        .user-characteristics h4 { color: #d68910; font-size: 1.2em; margin-bottom: 10px; }
+        .user-characteristics p { color: #666; line-height: 1.8; }
+        .chart-container { max-width: 500px; margin: 40px auto; padding: 30px; background: #f8f9fa; border-radius: 15px; }
+        .main-message-section { background: #e8f4fd; padding: 30px; border-radius: 15px; margin-top: 30px; }
+        .main-message-section h3 { color: #1565c0; font-size: 1.5em; margin-bottom: 20px; border-bottom: 3px solid #1565c0; padding-bottom: 10px; }
+        .main-message { background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #1E88E5; line-height: 2; font-size: 1.1em; color: #333; white-space: pre-line; }
+        .strengths-section { background: #e8f5e9; padding: 30px; border-radius: 15px; margin-top: 30px; }
+        .strengths-section h3 { color: #2e7d32; font-size: 1.5em; margin-bottom: 20px; border-bottom: 3px solid #2e7d32; padding-bottom: 10px; }
+        .strength-item { background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid #4caf50; }
+        .strength-item:last-child { margin-bottom: 0; }
+        .strength-item strong { color: #2e7d32; font-size: 1.1em; }
+        .bottleneck-section { background: #e8f4fd; padding: 30px; border-radius: 15px; margin-top: 30px; }
+        .bottleneck-section h3 { color: #1565c0; font-size: 1.5em; margin-bottom: 20px; border-bottom: 3px solid #1565c0; padding-bottom: 10px; }
+        .bottleneck-item { background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #1E88E5; }
+        .bottleneck-item strong { color: #1565c0; font-size: 1.1em; }
+        .nextstep-section { background: #e3f2fd; padding: 30px; border-radius: 15px; margin-top: 30px; }
+        .nextstep-section h3 { color: #1565c0; font-size: 1.5em; margin-bottom: 20px; border-bottom: 3px solid #1565c0; padding-bottom: 10px; }
+        .nextstep-item { background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #2196f3; line-height: 2; white-space: pre-line; }
+        .cta-section { background: linear-gradient(135deg, #062840 0%, #084563 100%); color: white; padding: 50px 40px; border-radius: 20px; margin-top: 50px; text-align: center; }
+        .cta-section h2 { font-size: 2em; margin-bottom: 20px; line-height: 1.5; }
+        .cta-section .tagline { font-size: 1.2em; margin-bottom: 30px; line-height: 1.8; }
+        .cta-section .badge { background: rgba(255,255,255,0.2); display: inline-block; padding: 10px 30px; border-radius: 30px; margin-bottom: 20px; font-size: 1.1em; }
+        .cta-section .service-name { font-size: 2.5em; font-weight: bold; margin: 20px 0; }
+        .cta-section .cta-message { font-size: 1.2em; margin-bottom: 30px; }
+        .cta-section .description { background: white; color: #062840; padding: 25px; border-radius: 15px; margin: 30px 0; text-align: left; line-height: 1.8; }
+        .cta-section .details { background: white; color: #062840; padding: 20px; border-radius: 10px; margin: 20px 0; font-size: 1.05em; line-height: 2; }
+        .cta-button { display: inline-block; background: #FF6B35; color: white; padding: 20px 50px; border-radius: 50px; font-size: 1.3em; font-weight: bold; text-decoration: none; margin-top: 30px; transition: all 0.3s; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+        .cta-button:hover { background: #F77F00; transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+        @media (max-width: 768px) { .cta-button { font-size: 1.0em; padding: 16px 30px; } }
+        .restart-btn { margin-top: 40px; text-align: center; }
+        .pc-only { display: inline; }
+        .sp-only { display: none; }
+        @media (max-width: 768px) { .pc-only { display: none; } .sp-only { display: inline; } }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KL6XD7FK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="container">
+        <div class="header">
+            <p style="font-size: 2.2em; margin-bottom: 20px; font-weight: bold; line-height: 1.4;">
+                <span style="font-size: 0.7em; font-weight: bold;">たった<span style="font-size: 1.3em; font-weight: bold;">5</span>つの質問で</span><br>
+                <span class="text-sp">新しい収入源の<br>ヒントが見えてくる</span>
+                <span class="text-pc" style="font-size: 1.2em;">新しい収入源のヒント<br>が見えてくる</span>
+            </p>
+            <p style="font-size: 1.2em; margin-bottom: 25px; font-weight: normal; line-height: 1.6;">
+                <br>約2分・無料<br>
+            </p>
+            <button class="btn btn-primary" onclick="startDiagnosis()" style="font-size: 1.2em; padding: 18px 50px;">診断を始める</button>
+        </div>
+        
+        <div class="content">
+            <!-- Start Section -->
+            <div class="start-section active" id="startSection">
+                <div class="description">
+                    <p>長年取り組んできた仕事・経験・スキルを思い浮かべながら答えてください。</p>
+                </div>
+                <p style="color: #666; margin-bottom: 50px;">所要時間：約2分</p>
+                <h2 style="margin-bottom: 20px;">運営者：金森正治</h2>
+                <!-- Vimeo動画 -->
+                <div style="border-radius:15px;overflow:hidden;">
+                    <div style="padding:56.25% 0 0 0;position:relative;">
+                        <iframe src="https://player.vimeo.com/video/1165073202?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="経験資産化見える化診断あいさつ"></iframe>
+                    </div>
+                    <script src="https://player.vimeo.com/api/player.js"></script>
+                </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn btn-primary" onclick="startDiagnosis()">診断を始める</button>
+                </div>
+            </div>
+            
+            <div class="progress-bar" id="progressBar" style="display: none;">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <!-- Question 1 -->
+            <div class="question-section" id="question1">
+                <div class="question-card">
+                    <div class="question-number">質問 1 / 5</div>
+                    <div class="question-text">あなたが仕事や活動で取り組んでいることの中で、時間を忘れて没頭できることはありますか？</div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="q1" value="1"><span class="option-label">全くない</span></label>
+                        <label class="option"><input type="radio" name="q1" value="2"><span class="option-label">あまりない</span></label>
+                        <label class="option"><input type="radio" name="q1" value="3"><span class="option-label">ややある</span></label>
+                        <label class="option"><input type="radio" name="q1" value="4"><span class="option-label">かなりある</span></label>
+                        <label class="option"><input type="radio" name="q1" value="5"><span class="option-label">非常にある</span></label>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <button class="btn btn-secondary" disabled>前へ</button>
+                    <button class="btn btn-primary" onclick="nextQuestion(1)">次へ</button>
+                </div>
+            </div>
+            
+            <!-- Question 2 -->
+            <div class="question-section" id="question2">
+                <div class="question-card">
+                    <div class="question-number">質問 2 / 5</div>
+                    <div class="question-text">あなたが長年取り組んできた分野や経験について、周りの人より詳しいと感じるものはありますか？</div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="q2" value="1"><span class="option-label">初心者レベル</span></label>
+                        <label class="option"><input type="radio" name="q2" value="2"><span class="option-label">人並みレベル</span></label>
+                        <label class="option"><input type="radio" name="q2" value="3"><span class="option-label">人より詳しい</span></label>
+                        <label class="option"><input type="radio" name="q2" value="4"><span class="option-label">かなり詳しい</span></label>
+                        <label class="option"><input type="radio" name="q2" value="5"><span class="option-label">専門家レベル</span></label>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <button class="btn btn-secondary" onclick="prevQuestion(2)">前へ</button>
+                    <button class="btn btn-primary" onclick="nextQuestion(2)">次へ</button>
+                </div>
+            </div>
+            
+            <!-- Question 3 -->
+            <div class="question-section" id="question3">
+                <div class="question-card">
+                    <div class="question-number">質問 3 / 5</div>
+                    <div class="question-text">あなたの経験やスキルについて、「どうやるの？」「教えて」と聞かれたことはありますか？</div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="q3" value="1"><span class="option-label">一度もない</span></label>
+                        <label class="option"><input type="radio" name="q3" value="2"><span class="option-label">1〜2回ある</span></label>
+                        <label class="option"><input type="radio" name="q3" value="3"><span class="option-label">時々ある</span></label>
+                        <label class="option"><input type="radio" name="q3" value="4"><span class="option-label">よくある</span></label>
+                        <label class="option"><input type="radio" name="q3" value="5"><span class="option-label">頻繁にある</span></label>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <button class="btn btn-secondary" onclick="prevQuestion(3)">前へ</button>
+                    <button class="btn btn-primary" onclick="nextQuestion(3)">次へ</button>
+                </div>
+            </div>
+            
+            <!-- Question 4 -->
+            <div class="question-section" id="question4">
+                <div class="question-card">
+                    <div class="question-number">質問 4 / 5</div>
+                    <div class="question-text">あなたの経験や関わりを通じて、誰かに感謝されたことはありますか？</div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="q4" value="1"><span class="option-label">一度もない</span></label>
+                        <label class="option"><input type="radio" name="q4" value="2"><span class="option-label">1〜2回ある</span></label>
+                        <label class="option"><input type="radio" name="q4" value="3"><span class="option-label">時々ある</span></label>
+                        <label class="option"><input type="radio" name="q4" value="4"><span class="option-label">よくある</span></label>
+                        <label class="option"><input type="radio" name="q4" value="5"><span class="option-label">頻繁にある</span></label>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <button class="btn btn-secondary" onclick="prevQuestion(4)">前へ</button>
+                    <button class="btn btn-primary" onclick="nextQuestion(4)">次へ</button>
+                </div>
+            </div>
+            
+            <!-- Question 5 -->
+            <div class="question-section" id="question5">
+                <div class="question-card">
+                    <div class="question-number">質問 5 / 5</div>
+                    <div class="question-text">あなたの経験やスキルに何かをプラスしたり、違った形で活かせる可能性を感じますか？</div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="q5" value="1"><span class="option-label">思いつかない</span></label>
+                        <label class="option"><input type="radio" name="q5" value="2"><span class="option-label">少しあるかも</span></label>
+                        <label class="option"><input type="radio" name="q5" value="3"><span class="option-label">ある程度ある</span></label>
+                        <label class="option"><input type="radio" name="q5" value="4"><span class="option-label">かなりある</span></label>
+                        <label class="option"><input type="radio" name="q5" value="5"><span class="option-label">無限にある</span></label>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <button class="btn btn-secondary" onclick="prevQuestion(5)">前へ</button>
+                    <button class="btn btn-primary" onclick="showResult()">結果を見る</button>
+                </div>
+            </div>
+            
+            <!-- Result Section -->
+            <div id="resultSection">
+                <h2 class="result-title">📊 診断結果</h2>
+                <div class="diagnosis-type">
+                    <h3 id="diagnosisTypeName"></h3>
+                    <p id="diagnosisOneWord"></p>
+                </div>
+                <div class="user-characteristics" id="userCharacteristics"></div>
+                <div class="chart-container">
+                    <canvas id="radarChart"></canvas>
+                </div>
+                <div class="main-message-section">
+                    <h3>📋 あなたへのメッセージ</h3>
+                    <div class="main-message" id="mainMessage"></div>
+                </div>
+                <div class="bottleneck-section">
+                    <h3>💡 伸びしろポイント！</h3>
+                    <div id="bottleneckContent"></div>
+                </div>
+                <div class="nextstep-section">
+                    <h3>🚀 次のステップ</h3>
+                    <div id="nextstepContent"></div>
+                </div>
+                
+                <!-- CTA Section -->
+                <div style="border-radius: 20px; margin-top: 50px; overflow: hidden;">
+
+                    <!-- ネイビー：ヘッドライン -->
+                    <div style="background: linear-gradient(135deg, #062840 0%, #084563 100%); color: white; padding: 50px 40px 44px; text-align: center;">
+                        <h2 style="font-size: clamp(24px, 6vw, 36px); font-weight: 800; margin-bottom: 0;">
+                            <span style="font-size: 0.75em; line-height: 1.4; display: inline-block;">
+                                <span class="pc-only">今の仕事を続けながら始められる</span>
+                                <span class="sp-only">今の仕事を続けながら<br>始められる</span>
+                            </span><br>
+                            <span style="line-height: 1.8; display: inline-block;">
+                                <span style="white-space: nowrap;"><span style="font-size: 1.2em;"><span style="color: #f5a623;">新しい収入源</span></span><span style="font-size: 1em;">の種</span></span><br>見つけませんか？
+                            </span><br>
+                            <span style="font-size: 0.65em; font-weight: 400; line-height: 1.6; display: inline-block;">
+                                <span class="pc-only">しかも…新しい資格やスキルを増やさずに。</span>
+                                <span class="sp-only">しかも…<br>新しい資格やスキルを<br>増やさずに。</span>
+                            </span>
+                        </h2>
+                    </div>
+
+                    <!-- ベージュ：コンテンツ＋CTA -->
+                    <div style="background: #F5F3EE; padding: 40px 40px 50px; text-align: center;">
+
+                        <!-- 得られるもの -->
+                        <div style="background: white; border-radius: 12px; padding: 24px 20px; margin: 0 0 24px; text-align: left;">
+                            <p style="text-align: center; color: #062840; font-weight: 800; font-size: 1.0em; border-bottom: 2px solid #062840; padding-bottom: 10px; margin-bottom: 18px;">あなたの経験を整理すると<br>こんな可能性が見えてきます</p>
+                            <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px;">
+                                <span style="font-size: 1.4em; flex-shrink: 0;">🔍</span>
+                                <div>
+                                    <p style="color: #062840; font-weight: 800; font-size: 1.0em; margin-bottom: 4px;">経験やスキルから、新しい収入源の種が見つかる</p>
+                                    <p style="color: #555; font-size: 0.88em; line-height: 1.7;">「当たり前」だと思っていた経験の中に、新しい収入源につながるヒントが隠れています。</p>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #f0ece4; padding-top: 18px; display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px;">
+                                <span style="font-size: 1.4em; flex-shrink: 0;">🛡️</span>
+                                <div>
+                                    <p style="color: #062840; font-weight: 800; font-size: 1.0em; margin-bottom: 4px;">今の仕事を続けながら始められる方向性が分かる</p>
+                                    <p style="color: #555; font-size: 0.88em; line-height: 1.7;">今の収入を守りながら、新しい収入源を始めるための具体的な方向性をお伝えします。</p>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #f0ece4; padding-top: 18px; display: flex; align-items: flex-start; gap: 14px;">
+                                <span style="font-size: 1.4em; flex-shrink: 0;">🚀</span>
+                                <div>
+                                    <p style="color: #062840; font-weight: 800; font-size: 1.0em; margin-bottom: 4px;">何から始めればいいか、次の一歩がわかる</p>
+                                    <p style="color: #555; font-size: 0.88em; line-height: 1.7;">「分かったけど、何から始めれば？」にも答えます。あなたに合った最初の一歩をお伝えします。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- レポートサンプル -->
+                        <div style="padding: 8px 0 24px;">
+                            <h3 style="text-align: center; font-size: clamp(16px, 4.5vw, 22px); font-weight: 800; color: #1a2340; margin-bottom: 20px;">
+                                <span class="pc-only">あなたの「新しい収入源の種」を<br>レポートでお届けします</span>
+                                <span class="sp-only">あなたの<br>「新しい収入源の種」を<br>レポートでお届けします</span>
+                            </h3>
+                            <div style="position: relative; max-width: 560px; margin: 0 auto; padding: 20px 10px 20px;">
+                                <!-- 背面：2ページ目 -->
+                                <div style="position: absolute; top: 30px; left: 50%; transform: translateX(-28%) rotate(4deg); width: 43%; box-shadow: 0 6px 20px rgba(0,0,0,0.18); border-radius: 4px; overflow: hidden;">
+                                    <a href="https://utagesystem.s3.ap-northeast-1.amazonaws.com/fhcBwZxr65eh/rrEhMyEB8gDEWbIDhkV3CxQl20LevMKbUajCtM8U.png" target="_blank"><img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/fhcBwZxr65eh/rrEhMyEB8gDEWbIDhkV3CxQl20LevMKbUajCtM8U.png" style="width: 100%; display: block;" alt="経験資産レポート2ページ目"></a>
+                                </div>
+                                <!-- 前面：1ページ目 -->
+                                <div style="position: relative; z-index: 2; margin: 0 auto; width: 55%; transform: rotate(-2deg); box-shadow: 0 8px 28px rgba(0,0,0,0.22); border-radius: 4px; overflow: hidden;">
+                                    <a href="https://utagesystem.s3.ap-northeast-1.amazonaws.com/fhcBwZxr65eh/QcPLsmns6sU8CRQVfxJjVvEJFrjSxnLIGsSBTeUW.png" target="_blank"><img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/fhcBwZxr65eh/QcPLsmns6sU8CRQVfxJjVvEJFrjSxnLIGsSBTeUW.png" style="width: 100%; display: block;" alt="経験資産レポート1ページ目"></a>
+                                </div>
+                            </div>
+                            <p style="text-align: center; color: #555; font-size: clamp(0.8em, 2.8vw, 0.95em); line-height: 1.7; margin-top: 8px;">診断結果と、簡単な追加回答をもとに<br>あなたの経験のどこに可能性があるかを整理してお届けします。</p>
+
+                            <!-- メールフォーム -->
+                            <div style="margin-top: 24px;">
+                                <form action="https://start.100nen-life.jp/r/cUi6XztxotyD/store" method="post" onsubmit="openTypeform(event)">
+                                    <div style="margin-bottom: 10px;">
+                                        <label style="display: block; font-weight: 800; color: #062840; font-size: 0.95em; margin-bottom: 6px;" for="mail">
+                                            メールアドレス <span style="background: #e53935; color: white; font-size: 0.75em; padding: 2px 8px; border-radius: 4px; font-weight: 700;">必須</span>
+                                        </label>
+                                        <input style="width: 100%; padding: 12px 14px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em; box-sizing: border-box;" required id="mail" type="email" name="mail" value="" autocomplete="email">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <button style="width: 100%; max-width: 480px; padding: 16px 24px; background: #FF6B36; color: white; font-size: clamp(1em, 3.5vw, 1.05em); font-weight: 800; border: none; border-radius: 50px; cursor: pointer; line-height: 1.6;" type="submit">
+                                            <span class="pc-only">無料で「新しい収入源の種」の<br>作成をはじめる</span>
+                                            <span class="sp-only">無料で<br><span style="white-space: nowrap;">「新しい収入源の種」の</span><br>作成をはじめる</span>
+                                        </button>
+                                    </div>
+                                </form>
+                                <p style="text-align: center; color: #888; font-size: 0.8em; margin-top: 10px;">このあと、レポート作成のための簡単な追加回答があります（約5分）</p>
+                                <p style="text-align: center; color: #555; font-size: 0.88em; margin-top: 8px; line-height: 1.7; font-weight: 800;">まずは、あなたの経験の中にある<br>"収入源の種"を見える形にしていきましょう。</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentQuestion = 0;
+        const answers = {};
+        const axisLabels = ['継続性', '専門性', '需要性', '信頼性', '拡張性'];
+
+        function openTypeform(event) {
+            event.preventDefault();
+            const mail = document.getElementById('mail').value;
+            const typeformUrl = 'https://form.typeform.com/to/wpToEtPq#email=' + encodeURIComponent(mail);
+
+            // 裏側でUTAGEに登録
+            fetch('https://start.100nen-life.jp/r/cUi6XztxotyD/store', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'mail=' + encodeURIComponent(mail),
+                mode: 'no-cors'
+            }).catch(function() {});
+
+            // メインタブをTypeformに遷移
+            window.location.href = typeformUrl;
+        }
+
+        function saveMailBeforeSubmit() {
+            const mail = document.getElementById('mail').value;
+            localStorage.setItem('utage_mail', mail);
+        }
+        
+        function startDiagnosis() {
+            document.getElementById('startSection').classList.remove('active');
+            document.getElementById('progressBar').style.display = 'block';
+            currentQuestion = 1;
+            document.getElementById('question1').classList.add('active');
+            updateProgress();
+            setTimeout(() => { document.getElementById('question1').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+        }
+        
+        function updateProgress() {
+            const progress = (currentQuestion / 5) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+        
+        function nextQuestion(questionNum) {
+            const selected = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            if (!selected) { alert('回答を選択してください'); return; }
+            answers[`q${questionNum}`] = parseInt(selected.value);
+            document.getElementById(`question${questionNum}`).classList.remove('active');
+            currentQuestion++;
+            if (currentQuestion <= 5) { document.getElementById(`question${currentQuestion}`).classList.add('active'); updateProgress(); }
+        }
+        
+        function prevQuestion(questionNum) {
+            document.getElementById(`question${questionNum}`).classList.remove('active');
+            currentQuestion--;
+            document.getElementById(`question${currentQuestion}`).classList.add('active');
+            updateProgress();
+        }
+        
+        function showResult() {
+            const selected = document.querySelector('input[name="q5"]:checked');
+            if (!selected) { alert('回答を選択してください'); return; }
+            answers['q5'] = parseInt(selected.value);
+            document.getElementById('question5').classList.remove('active');
+            document.getElementById('progressBar').style.display = 'none';
+            document.getElementById('resultSection').classList.add('active');
+            const diagnosisType = getDiagnosisType(answers);
+            displayResults(diagnosisType, answers);
+            createRadarChart(answers);
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({event: 'diagnosis_complete'});
+        }
+        
+        function getDiagnosisType(scores) {
+            const continuity = scores.q1, expertise = scores.q2, demand = scores.q3, trust = scores.q4, scalability = scores.q5;
+            const total = continuity + expertise + demand + trust + scalability;
+            if (total >= 20 && expertise >= 4 && trust >= 4) return getTypeData(1);
+            if (expertise >= 4 && continuity >= 4 && demand <= 2 && trust <= 2) return getTypeData(2);
+            if (trust >= 4 && continuity >= 4 && expertise <= 2) return getTypeData(3);
+            if (continuity >= 4 && scalability >= 4 && trust <= 2) return getTypeData(4);
+            if (demand >= 4 && trust >= 4) return getTypeData(5);
+            if (continuity >= 4 && expertise >= 4 && demand <= 2) return getTypeData(6);
+            if (trust >= 4 && scalability >= 4 && demand <= 2) return getTypeData(7);
+            if (total >= 15 && total <= 20 && continuity >= 3 && expertise >= 3 && demand >= 3 && trust >= 3 && scalability >= 3) return getTypeData(8);
+            if (expertise >= 4 && continuity >= 4 && trust <= 2 && demand <= 2) return getTypeData(9);
+            if (trust >= 4 && expertise <= 2 && demand <= 2) return getTypeData(10);
+            if (continuity >= 4 && scalability >= 4 && expertise <= 2 && trust <= 2) return getTypeData(11);
+            if (scalability >= 4 && total <= 15) return getTypeData(12);
+            if (expertise >= 4 && demand <= 2 && scalability <= 2) return getTypeData(13);
+            if (total >= 10 && total <= 15) return getTypeData(14);
+            if (total <= 10) return getTypeData(15);
+            return getTypeData(8);
+        }
+        
+        function getTypeData(typeNum) {
+            const types = {
+                1: { name: 'プロの実力者', oneWord: 'あなたの経験は、すでに資産です', message: `あなたは、「プロの実力者」です。\n継続してきた経験、専門性、そして信頼の実績。\nこれらはすでに、今の仕事以外の収入を作れる土台は揃っています。\nでも、こんな問いが浮かんでいませんか？\n「この働き方を、あと10年続けられるだろうか」\n「収入は安定しているけれど、心が満たされない」\nその問いは、次のステージに来ているサインです。\n今の仕事を続けながら、もう一本、経験から生まれた収入の柱が立っている。\nそんな状態が、あなたにはすでに手の届くところにあります。\nあとはどう構成するかだけです。`, strengths: ['専門性：長年培った深い知識と経験が、確かな価値として認められています', '信頼性：クライアントや周囲から「あなただから」と指名される実績があります', '継続性：時間を忘れて取り組める情熱と、それを持続できる力があります'], bottleneck: '再構築力：今ある実績を「次のステージ」に進化させる設計がまだできていません。このまま同じやり方を続けると、消耗するリスクがあります。', nextStep: `あなたの場合、実績も経験も十分にある。だからこそ、「どれを軸にするか」が最初の分岐点です。\n何を始めるかより、どの経験を活かすかで、その後の展開が大きく変わります。\nただ、それを自分ひとりで見極めるのは意外と難しいもの。\nだから次は、あなたの経験のどこに可能性があるかを一緒に整理してみませんか。` },
+                2: { name: '経験豊富・ニーズ未発見型', oneWord: '豊富な知識が、眠っています', message: `あなたは、「経験豊富・ニーズ未発見型」です。\n長年積み上げてきた専門知識と経験。\nそれは今の仕事以外の収入につながります。\nでも、こんな感覚はありませんか？\n「この知識、誰かの役に立てるはずなのに」\n「自分では当たり前すぎて、価値だと気づけなかった」\nあなたの知識や視点は、誰かにとっては"人生を変える一言"になる可能性があります。\nその知識が届いた人から「おかげで変われました」と言われる。\nこんな場面を実現できます。\n問題は「誰に」「どう届けるか」がまだ言語化されていないだけです。`, strengths: ['専門性：その分野について、周囲より圧倒的に深く詳しい知識を持っています', '継続性：学び続けることが苦にならず、知識の蓄積が進んでいます', '拡張性：知識の幅が広く、様々な切り口で価値提供できる可能性があります'], bottleneck: '伝達力：豊富な知識があるのに「誰に」「どう届けるか」が明確になっていません。知識を必要な人に届ける言語化と発信の仕組みが不足しています。', nextStep: `あなたの場合、知識や経験はすでに十分にある。足りないのは「誰に届けるか」という視点です。\n何を新しく学ぶより、今ある知識のどれが価値になるかを見極めることが先です。\nただ、自分の知識は「当たり前」に感じやすいからこそ、ひとりで気づくのは難しい。\nだから次は、あなたの知識のどこに可能性があるかを一緒に整理してみませんか。` },
+                3: { name: '人間力はあるが、専門軸が弱い型', oneWord: '感謝の実績はあるが、言語化が必要です', message: `あなたは、「人間力はあるが、専門軸が弱い型」です。\n気づけば誰かの相談に乗り、\n「あなたと話すと、スッキリする」と感謝される。\nそれはあなたの人間力が、確かな価値として届いている証拠です。\nでも、こんなモヤモヤを感じていませんか？\n「感謝されるのは嬉しいけれど、収入につながらない」\n「この力を、どう仕事にすればいいか分からない」\nしかし、この「信頼される力」こそ、AIには代替できない最強の土台です。\n「あなただから話したい」と指名され、やりがいと収入が両立している。\nそんな状態が、この力を言語化するだけで実現できます。`, strengths: ['信頼性：誰かに感謝される経験を重ね、人間力が評価されています', '継続性：長期的に人と関わり、関係性を育む力があります', '拡張性：今ある信頼をベースに、新しい形で価値提供できる土台があります'], bottleneck: '専門性：人間力はあるのに「何の専門家か」が不明瞭です。信頼される力を、明確な専門軸として言語化・構造化することが次の課題です。', nextStep: `あなたの場合、人から頼られる力はすでにある。あとは「何の専門家か」を言葉にするだけです。\nただ、自分の人間力はあまりに自然すぎて、どこが強みか自分では見えにくいもの。\nだから次は、あなたの高い人間力をどう言語化できるかを一緒に整理してみませんか。` },
+                4: { name: '実力はあるが、届いてない型', oneWord: '実力はある。届け方を変えれば、一気に変わります', message: `あなたは、「実力はあるが、届いてない型」です。\n\n長年の経験、積み上げた知識、広げられる可能性。\n実力は確かにあります。\n\nでも、こんな感覚はありませんか？\n\n「やっているのに、評価されない」\n「自分の価値が、伝わっていない気がする」\n\nそれはあなたの実力が足りないからではありません。\n「必要な人に届ける」ステップがまだ踏めていないだけです。\n\n「あなたにお願いしたい」と声がかかり、実力が収入に直結している。\nそんな状態が、届け方を変えるだけで手に入ります。`, strengths: ['継続性：時間を忘れて取り組める情熱と、続ける力があります', '拡張性：様々な切り口で価値提供できる可能性があります', '潜在実力：まだ言語化されていない、隠れた価値の宝庫です'], bottleneck: '届ける力：実力はあるのに、それが必要な人に届いていません。価値を「誰に」「どう届けるか」を設計することで、感謝される経験が増えていきます。', nextStep: `あなたの場合、実力はある。足りないのは「誰に、どう届けるか」という設計だけです。\nただ、自分の価値は近すぎて見えにくく、どの実力をどう届けるか、ひとりでは判断しにくいもの。\nだから次は、あなたの実力のどこを、誰に届けるかを一緒に整理してみませんか。` },
+                5: { name: '市場価値即戦型', oneWord: '需要が高い今、売り方次第で飛躍します', message: `あなたは、「市場価値即戦型」です。\n需要があり、感謝され、求められている。\nあなたのスキルと経験は、すでに市場価値として確立されています。\nでも、こんな違和感はありませんか？\n「求められてはいるけれど、積み上がってない」\n「このやり方を、あと10年続けるのは無理かも」\nそれは"売り方"が今のステージと合わなくなっているサインです。\n必要なのは「働いた分だけ稼ぐ」から「仕組みで稼ぐ」に変えること。\n働く時間を減らしても収入が落ちない。空いた時間を自由に使える。\nそんな状態が、設計一つで実現できます。`, strengths: ['需要性：市場やクライアントから「欲しい」と求められる明確な価値があります', '信頼性：実際に感謝され、成果を出してきた実績があります', '拡張性：今の価値を、さらに広げる・深める可能性があります'], bottleneck: '収益化力：需要はあるのに「時間労働型」から抜け出せていません。仕組み化・スケール化の設計ができれば、収入を保ちながら新しい挑戦ができます。', nextStep: `あなたの場合、需要はすでにある。課題は「働く量」ではなく「稼ぎ方の設計」です。\nどの経験を仕組み化するかを間違えると、手間だけ増えて収入が変わらないことも。\nだから次は、あなたのどの経験を仕組み化すべきかを一緒に見極めてみませんか。` },
+                6: { name: '職人気質・隠れた宝型', oneWord: '技術はあるが、見つかっていません', message: `あなたは、「職人気質・隠れた宝型」です。\n\n長年磨いてきた技術とこだわりの専門性。\nそれは今の仕事以外の収入につながり得る「技」です。\n\nでも、こんな感覚はありませんか？\n\n「技術には自信があるのに、なかなか依頼が来ない」\n「良いものを作っているのに、埋もれている気がする」\n\n職人気質の人ほど"価値の見せ方"で損をしています。\n技術が高い人ほど「見れば分かるはず」と思い込み、言葉での説明を省いてしまうから。\n\n「この技術、あなたにしかできない」と指名が入り、仕事が途切れない。\nそんな状態が、言葉一つで手に入ります。`, strengths: ['専門性：特定分野で深く極めた技術と知識があります', '継続性：時間をかけて磨き続けてきた、本物の技があります', '独自性：こだわり抜いた技術は、簡単には真似できない価値です'], bottleneck: '認知力：技術はあるのに、見つけてもらえていません。あなたの価値を必要な人に届ける「見せ方」と「伝え方」の設計が不足しています。', nextStep: `あなたの場合、技術はある。足りないのは「それを言葉にする」ことだけです。\nただ、どの技術をどんな言葉で語るかは、自分ひとりでは見えにくいもの。\nだから次は、あなたの技術のどこを、どう言葉にできるかを一緒に整理してみませんか。` },
+                7: { name: '人気者・収益化待ち型', oneWord: '独自の魅力がある。収益化が鍵です', message: `あなたは、「人気者・収益化待ち型」です。\n\n周囲から頼られ、「あなたと一緒にいると元気が出る」と言われる。\nそれはあなたの人間的魅力が、確かな価値として伝わっている証拠です。\n\nでも、こんなジレンマを感じていませんか？\n\n「ファンはいるけれど、収入につながらない」\n「どうやって"仕事"にすればいいか分からない」\n\nAIがどれだけ進化しても「この人だから」という魅力は代替されません。\n今必要なのは、その魅力を「収益モデル」として作り上げること。\n好きな人と関わりながら、自然に収入が入ってくる。\nそんな状態が、設計一つで実現できます。`, strengths: ['信頼性：周囲から頼られ、感謝される人間的魅力があります', '拡張性：今ある人気や影響力を、様々な形で展開できる可能性があります', '継続性：人と関わり続けることが苦にならない、持続的な人間力があります'], bottleneck: '収益設計力：人気はあるのに、収益モデルが確立していません。魅力を自然に収益化する仕組みを設計することで、やりがいと収入が両立します。', nextStep: `あなたの場合、人を惹きつける魅力はすでにある。あとは「それをどう収入につなげるか」だけです。\nただ、自分の魅力は自分では当たり前すぎて、どこが収益化できるか見えにくいもの。\nだから次は、あなたのどの魅力を収入につなげられるかを一緒に整理してみませんか。` },
+                8: { name: 'バランス型・突破口待ち', oneWord: '全体は安定。あと一歩で飛躍します', message: `あなたは、「バランス型・突破口待ち」です。\n\n継続性も、専門性も、需要も、信頼も、どれも一定以上のレベル。\nあなたが堅実に経験を積み上げてきた証拠です。\n\nでも、こんな感覚はありませんか？\n\n「安定はしているけれど、何かが足りない」\n「このままでは、記憶に残らない気がする」\n\nバランスが取れているからこそ、今は"尖り"が必要な段階です。\n「あなただけのウリ」の軸を作ること。\n「あの人といえばこれ」と真っ先に名前が挙がり、指名が絶えない。\nその状態が、一点を尖らせるだけで手に入ります。`, strengths: ['安定性：全ての要素が一定以上のレベルにあり、基礎が固まっています', '柔軟性：どの方向にも進める土台があり、選択肢が豊富です', '継続性：着実に経験を積み上げてきた堅実さがあります'], bottleneck: '尖り不足：全体が安定している分、「これだけは誰にも負けない」という一点突破の軸がありません。記憶に残る独自性を作ることが次の飛躍の鍵です。', nextStep: `あなたの場合、全体のバランスは整っている。あとは「どこを尖らせるか」を決めるだけです。\nただ、尖らせる軸を間違えると、また元のバランス型に戻ってしまいます。\nだから次は、あなたのどの経験を一点突破の軸にできるかを一緒に整理してみませんか。` },
+                9: { name: '経験豊富・見せ方改善型', oneWord: '実力はあるが、伝わっていません', message: `あなたは、「経験豊富・見せ方改善型」です。\n\n長年積み上げてきた経験と専門知識。実力は十分にあります。\n\nでも、こんなモヤモヤを感じていませんか？\n\n「実力はあるはずなのに、評価されない」\n「自分の価値を、うまく言葉にできない」\n\n実力者ほど"見せ方"で損をしています。\n経験が豊富な人ほど「見れば分かるはず」と思い込み、価値を過小評価してしまうから。\n\n「あなたのような経験を持っている人を探していた！」と言われ、経験が収入に直結している。\nそんな状態が、言葉にするだけで手に入ります。`, strengths: ['専門性：長年の経験から得た、深い知識と洞察力があります', '継続性：その分野で長く取り組んできた実績と信用があります', '潜在価値：まだ言語化されていない、隠れた価値の宝庫です'], bottleneck: '言語化力：実力はあるのに、価値が伝わっていません。経験を「誰に何を提供できるか」として明確に言語化し、見える形にすることが必要です。', nextStep: `あなたの場合、経験と実力はある。足りないのは「それを伝える言葉」だけです。\nただ、どの経験をどう言葉にするかは、自分ひとりでは見えにくいもの。\nだから次は、あなたのどの経験をどう言葉にできるかを一緒に整理してみませんか。` },
+                10: { name: '人間力型・専門性補強待ち', oneWord: '人柄は武器。専門軸が必要です', message: `あなたは、「人間力型・専門性補強待ち」です。\n\n誰かの話を聞いて、共感して、励ます。\n気づけば周囲から頼られ、感謝されている。\nそれはあなたの人間力が、確かな価値として届いている証拠です。\n\nでも、こんな悩みはありませんか？\n\n「感謝はされるけれど、お金にならない」\n「何の専門家か、自分でも分からない」\n\n人間力こそが、最も強力な土台です。\n今必要なのは、その力に「専門性の軸」を掛け合わせること。\n「〇〇といえばあの人」と自然に名前が浮かび、選ばれ続ける存在になる。\nそんな状態が、軸を一つ決めるだけで手に入ります。`, strengths: ['信頼性：人柄が評価され、感謝される経験を積んでいます', '継続性：人と長期的に関わり、関係性を育てる力があります', '土台力：専門性を乗せれば一気に飛躍できる、強固な土台があります'], bottleneck: '専門軸：人柄は素晴らしいのに「何の専門家か」が不明瞭です。人間力に専門性という柱を立てることで、選ばれる理由が明確になります。', nextStep: `あなたの場合、人柄という強固な土台はすでにある。あとは「何の専門家か」を一つ決めるだけです。\nただ、どの専門軸が自分に合うかは、自分ひとりでは判断しにくいもの。\nだから次は、あなたの人間力にどの専門軸を掛け合わせるかを一緒に整理してみませんか。` },
+                11: { name: 'やる気十分・経験蓄積型', oneWord: '継続力はある。実績を積む段階です', message: `あなたは、「やる気十分・経験蓄積型」です。\n\n時間を忘れて続けられることがある。\nこれから広げていきたい想いがある。\nその継続力と情熱は、あなたの大きな強みです。\n\nでも、こんな焦りを感じていませんか？\n\n「やる気はあるけれど、実績がまだ少ない」\n「このまま続けて、本当に形になるのか不安」\n\n大丈夫です。土台はすでにあります。\nあとは経験を「小さな実績」として積み上げ、見える形にするだけ。\n続けてきたことが収入として形になり、「やっていてよかった」と思える日が来る。\nその未来は、今の積み重ねの先にあります。`, strengths: ['継続性：時間を忘れて取り組める情熱と、続ける力があります', '拡張性：これから広げていける可能性と、成長余地があります', '前向き力：新しいことに挑戦する意欲と行動力があります'], bottleneck: '実績の可視化：継続力はあるのに、成果がまだ形になっていません。小さな実績を積み上げ、それを「見える収入源」として蓄積する仕組みが必要です。', nextStep: `あなたの場合、続ける力と情熱はある。あとは「どの方向に積み上げるか」を決めるだけです。\nただ、方向を間違えると、頑張っても収入につながりにくくなります。\nだから次は、あなたのどの経験を積み上げるべきかを一緒に整理してみませんか。` },
+                12: { name: '潜在ダイヤモンド型', oneWord: '原石はある。磨き方を学びましょう', message: `あなたは、「潜在ダイヤモンド型」です。\n\nまだ新しい収入源の形にはなっていないかもしれない。\nでも、あなたの中には「広がる可能性」がある。\n\nこんな想いを抱いていませんか？\n\n「何かやりたいけれど、何から始めればいいか分からない」\n「このまま何もしないのは嫌だ」\n\nその焦りこそが、原石が輝き始めるサインです。\nまずは、あなたの中にある収入につながる「種」を見つけること。\n自分の経験が誰かの役に立ち、「ありがとう」と感謝される。\nそんな場面が、種を見つけるだけで現実になります。`, strengths: ['拡張性：まだ開拓されていない、広がる可能性があります', '柔軟性：これから方向性を決められる自由度があります', '成長力：今が始まりだからこそ、伸びしろが無限にあります'], bottleneck: '方向性：可能性はあるのに、どこに向かうかが定まっていません。まずは「経験の種」を見つけ、一つの軸を決めることが最初の一歩です。', nextStep: `あなたの場合、可能性はある。まだ見えていないだけで、収入につながる経験は必ずあります。\nただ、どの経験が「種」になるかは、自分ひとりでは気づきにくいもの。\nだから次は、あなたのどの経験に可能性が眠っているかを一緒に探してみませんか。` },
+                13: { name: 'ニッチ専門家型', oneWord: '狭く深い。市場を広げる工夫を', message: `あなたは、「ニッチ専門家型」です。\n\n特定の分野で、深く、詳しく、極めている。\nその専門性は新しい収入につながり得るものです。\n\nでも、こんな悩みはありませんか？\n\n「マニアックすぎて、需要が限られている」\n「専門性は高いのに、収入につながらない」\n\nニッチな専門性こそが、最も強力な差別化の武器です。\n今必要なのは専門性を捨てることではなく、「誰に」「どう届けるか」を再設計すること。\n「こんな専門家を探していた」と言われ、競合なしで選ばれ続ける。\nその状態が、語り方を変えるだけで手に入ります。`, strengths: ['専門性：特定分野で深く極めた、唯一無二の知識があります', '独自性：競合が少ない領域での強みがあり、差別化されています', '継続性：その分野に長く取り組んできた、本物の専門性があります'], bottleneck: '市場拡張力：専門性は高いのに、需要が限定的です。ニッチな強みを「より広い文脈」で語り直し、市場を広げる工夫が次のステップです。', nextStep: `あなたの場合、深い専門性はある。あとは「それをどう広く届けるか」を変えるだけです。\nただ、どの切り口で語り直すかは、自分ひとりでは見えにくいもの。\nだから次は、あなたの専門性をどの切り口で届けるのかを一緒に整理してみませんか。` },
+                14: { name: '経験再定義必要型', oneWord: '棚卸しから始めましょう', message: `あなたは、「経験再定義必要型」です。\n\nいろいろな経験をしてきた。\nでも、それが「一本の線」としてつながっていない。\n\nこんな感覚はありませんか？\n\n「自分の強みが、何なのか分からない」\n「やってきたことが、バラバラに感じる」\n\n大丈夫です。それはあなたが多様な経験を持っている証拠。\n今必要なのは、その経験を「棚卸し」して一本の線でつなぐこと。\nバラバラだった経験が一つの軸でつながり、「これが私の強みだ」と言える瞬間が来る。\nその瞬間が、棚卸し一つで手に入ります。`, strengths: ['多様性：様々な経験をしてきた幅の広さがあります', '柔軟性：多角的な視点を持ち、組み合わせ次第で独自の価値を作れます', '可能性：整理すれば、思わぬ強みが見つかる素材の豊富さがあります'], bottleneck: '一貫性：様々な経験があるのに、それが一本の線でつながっていません。経験を棚卸しし、「一貫した軸」を見つけることで収入化が始まります。', nextStep: `あなたの場合、経験の数は十分にある。あとは「それをどうつなぐか」を整理するだけです。\nただ、バラバラに見える経験をどう一本の線にするかは、自分ひとりでは見えにくいもの。\nだから次は、あなたのどの経験をどうつなげるかを一緒に整理してみませんか。` },
+                15: { name: 'スタートライン型', oneWord: '今が収入づくりの始まりです', message: `あなたは、「スタートライン型」です。\n\n今はまだ、経験も実績も少ないかもしれない。\nでも、それは決してマイナスではありません。\n\nこんな想いを抱いていませんか？\n\n「何か新しいことを始めたい」\n「自分には、まだ何もない気がする」\n\nその想いこそが、あなたの第一歩です。\n必要なのは「これから何を積み上げるか」を決め、一歩踏み出すこと。\n自分の経験が収入になり、「やっと自分らしく働けている」と感じる日が来る。\n今日がその未来へのスタートラインです。`, strengths: ['可能性：これから何でも積み上げられる、真っ白なキャンバスがあります', '柔軟性：固定観念がなく、自由に方向性を選べる強みがあります', '成長力：今日からの積み重ねが、未来の収入になる大きな伸びしろがあります'], bottleneck: '経験不足：今はまだ積み上げるべき経験が少ない段階です。焦らず、「何を積み上げるか」を決め、一歩ずつ収入につながる経験を積んでいくことが大切です。', nextStep: `あなたの場合、まだ方向が決まっていない分、今から最短ルートを選べる状態です。\nただ、何を積み上げるかを間違えると、時間と労力が無駄になってしまいます。\nだから次は、まず何を積み上げるかを一緒に見つけてみませんか。` }
+            };
+            return types[typeNum];
+        }
+        
+        function displayResults(diagnosisType, scores) {
+            document.getElementById('diagnosisTypeName').textContent = diagnosisType.name;
+            document.getElementById('diagnosisOneWord').textContent = diagnosisType.oneWord;
+            const characteristics = generateUserCharacteristics(scores);
+            document.getElementById('userCharacteristics').innerHTML = `<h4>💡 あなたの特徴</h4><p>${characteristics}</p>`;
+            document.getElementById('mainMessage').textContent = diagnosisType.message;
+            const bottleneckSupplement = generateBottleneckSupplement(scores);
+            document.getElementById('bottleneckContent').innerHTML = `<div class="bottleneck-item">${diagnosisType.bottleneck}${bottleneckSupplement}</div>`;
+            document.getElementById('nextstepContent').innerHTML = `<div class="nextstep-item">${diagnosisType.nextStep}</div>`;
+        }
+        
+        function generateUserCharacteristics(scores) {
+            const scoresArray = [{name: '継続性', value: scores.q1},{name: '専門性', value: scores.q2},{name: '需要性', value: scores.q3},{name: '信頼性', value: scores.q4},{name: '拡張性', value: scores.q5}];
+            const maxScore = Math.max(...scoresArray.map(s => s.value));
+            const minScore = Math.min(...scoresArray.map(s => s.value));
+            const highestScores = scoresArray.filter(s => s.value === maxScore);
+            const lowestScores = scoresArray.filter(s => s.value === minScore);
+            let text = '';
+            if (maxScore === minScore) {
+                if (maxScore >= 4) text = '全ての項目がバランス良く高く、強固な基盤を持っています。';
+                else if (maxScore >= 3) text = '全ての項目がバランスよく揃っており、成長できる状態です。';
+                else text = '全ての項目がまだ伸びしろの段階です。これから一つひとつ積み上げていきましょう。';
+                return text;
+            }
+            if (highestScores.length === 1) text = `特に${highestScores[0].name}(${highestScores[0].value})が高く、`;
+            else if (highestScores.length === 2) text = `特に${highestScores[0].name}(${highestScores[0].value})と${highestScores[1].name}(${highestScores[1].value})が高く、`;
+            else { const names = highestScores.map(s => `${s.name}(${s.value})`).join('、'); text = `${names}がバランス良く高く、`; }
+            if (maxScore >= 4) text += '強固な基盤を持っています。';
+            else if (maxScore >= 3) text += 'バランスを保ちながら成長できる状態です。';
+            else text += 'これから伸ばしていける段階です。';
+            text += `\n\n一方で`;
+            if (lowestScores.length === 1) text += `${lowestScores[0].name}(${lowestScores[0].value})がやや低めなので、`;
+            else if (lowestScores.length === 2) text += `${lowestScores[0].name}(${lowestScores[0].value})と${lowestScores[1].name}(${lowestScores[1].value})がやや低めなので、`;
+            else { const names = lowestScores.map(s => `${s.name}(${s.value})`).join('、'); text += `${names}がやや低めなので、`; }
+            const adviceMap = {'継続性': '長期的な視点で取り組める工夫が次のステップです','専門性': '専門性を深める、または明確にすることが鍵です','需要性': '市場やクライアントへの見せ方を改善することが効果的です','信頼性': '小さな実績を積み重ね、信頼を可視化することが重要です','拡張性': '現在の強みを横展開・応用する可能性を探ることが有効です'};
+            if (lowestScores.length === 1) text += adviceMap[lowestScores[0].name] + '。';
+            else if (lowestScores.length === 2) text += 'これらの軸を補強することで全体のバランスが向上します。';
+            else text += 'これらの軸を伸ばすことで新しい収入源を作れる確率が高まります。';
+            return text;
+        }
+        
+        function generateBottleneckSupplement(scores) {
+            const scoresArray = [{name: '継続性', value: scores.q1, text: '時間を忘れて取り組める経験が少ない状態です。長期的に続けられることを見つけることが次のステップです。'},{name: '専門性', value: scores.q2, text: '専門的な知識や経験がまだ不足しています。一つの分野を深く学ぶことで、価値が高まります。'},{name: '需要性', value: scores.q3, text: '周囲から求められる経験が少ない状態です。あなたの価値を必要な人に届ける工夫が必要です。'},{name: '信頼性', value: scores.q4, text: '感謝される経験がまだ少ない段階です。小さな実績を積み重ね、信頼を可視化することが重要です。'},{name: '拡張性', value: scores.q5, text: '経験を広げる・応用する視点がまだ不足しています。今ある経験を横展開する可能性を探ることが効果的です。'}];
+            const maxScore = Math.max(...scoresArray.map(s => s.value));
+            const minScore = Math.min(...scoresArray.map(s => s.value));
+            if (maxScore === minScore) return '';
+            const lowestScores = scoresArray.filter(s => s.value === minScore);
+            if (lowestScores.length === 1) { const lowest = lowestScores[0]; return `<br><br>特に「${lowest.name}」のスコアが低めです。${lowest.text}`; }
+            if (lowestScores.length === 2) { const names = lowestScores.map(s => s.name).join('」と「'); const texts = lowestScores.map(s => s.text).join('また、'); return `<br><br>特に「${names}」のスコアが低めです。${texts}`; }
+            const names = lowestScores.map(s => s.name).join('」「');
+            return `<br><br>特に「${names}」のスコアが低めです。これらの軸を伸ばすことで、新しく収入を増やすことができます。`;
+        }
+        
+        function createRadarChart(scores) {
+            const ctx = document.getElementById('radarChart').getContext('2d');
+            const data = { labels: axisLabels, datasets: [{ label: 'あなたのスコア', data: [scores.q1, scores.q2, scores.q3, scores.q4, scores.q5], backgroundColor: 'rgba(46, 134, 171, 0.2)', borderColor: 'rgba(46, 134, 171, 1)', borderWidth: 2, pointBackgroundColor: 'rgba(46, 134, 171, 1)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgba(46, 134, 171, 1)', pointRadius: 5, pointHoverRadius: 7 }] };
+            const config = { type: 'radar', data: data, options: { scales: { r: { beginAtZero: true, max: 5, min: 0, ticks: { stepSize: 1, font: { size: 12 } }, pointLabels: { font: { size: 14, weight: 'bold' } } } }, plugins: { legend: { display: false } } } };
+            new Chart(ctx, config);
+        }
+        
+        function restart() {
+            currentQuestion = 0;
+            Object.keys(answers).forEach(key => delete answers[key]);
+            document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+            document.getElementById('resultSection').classList.remove('active');
+            document.getElementById('startSection').classList.add('active');
+            document.getElementById('progressBar').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
